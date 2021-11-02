@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--
+This is a animl document. But it is no valid animl document, since it links the technique "Microplate Read" which requires a Series named "Position" in the SeriesSet named "Read" of the Result named "Read". Such a Series is missing (commented out) in this animl document.
+-->
+<AnIML xmlns="urn:org:astm:animl:schema:core:draft:0.90" version="0.90">
+  <SampleSet>
+    <Sample sampleID="plate_0" name="Sample_1"/>
+  </SampleSet>
+  <ExperimentStepSet>
+    <ExperimentStep name="absorbance_0" experimentStepID="step_0">
+      <Technique name="Microplate Read" uri=""/>
+      <Infrastructure>
+        <SampleReferenceSet>
+          <SampleReference sampleID="plate_0" role="Test Sample" samplePurpose="consumed"/>
+        </SampleReferenceSet>
+      </Infrastructure>
+      <Result name="Read">
+<!--
+		<Series name="Position" seriesType="Int32" plotScale="none" dependency="independent" seriesID="absorbance">
+            <AutoIncrementedValueSet>
+              <StartValue>
+                <I>0</I>
+              </StartValue>
+              <Increment>
+                <I>1</I>
+              </Increment>
+            </AutoIncrementedValueSet>
+          </Series>
+-->
+        <SeriesSet name="Read" length="4">
+          <Series name="Value" seriesType="Float32" plotScale="none" dependency="dependent" seriesID="absorbance">
+            <IndividualValueSet>
+              <F>0.0996</F>
+              <F>0.2146</F>
+              <F>0.1679</F>
+              <F>0.1395</F>
+		    </IndividualValueSet>
+          </Series>
+        </SeriesSet>
+      </Result>
+    </ExperimentStep>
+  </ExperimentStepSet>
+  <AuditTrailEntrySet/>
+</AnIML>

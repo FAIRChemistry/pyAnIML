@@ -1,0 +1,916 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This is the original document.
+It is a valid, but not stricly valid, since there is a lot of additional information.
+One could extend the tenchique, so this animl document becomes stricly valid regarding the extended technique
+-->
+<AnIML xmlns="urn:org:astm:animl:schema:core:draft:0.90" version="0.90">
+  <SampleSet>
+    <Sample sampleID="plate_0" name="Sample1" containerType="96 wells">
+      <Category name="Description">
+        <Parameter name="Descriptive Name" parameterType="String">
+          <S>Nice descriptive name</S>
+        </Parameter>
+      </Category>
+      <Category name="SiLA Labware Properties">
+        <Parameter name="Rows" parameterType="Int32">
+          <I>8</I>
+        </Parameter>
+        <Parameter name="Columns" parameterType="Int32">
+          <I>12</I>
+        </Parameter>
+        <Parameter name="Total Positions" parameterType="Int32">
+          <I>96</I>
+        </Parameter>
+      </Category>
+    </Sample>
+  </SampleSet>
+  <ExperimentStepSet>
+    <ExperimentStep name="absorbance_0" experimentStepID="step_0">
+      <Technique name="Microplate Read" uri=""/>
+      <Infrastructure>
+        <SampleReferenceSet>
+          <SampleReference sampleID="plate_0" role="Test Sample" samplePurpose="consumed"/>
+        </SampleReferenceSet>
+        <Timestamp>2020-06-22T11:38:00</Timestamp>
+      </Infrastructure>
+      <Method>
+        <Author userType="software">
+          <Name>lara-w71pro-64\lara</Name>
+        </Author>
+        <Device>
+          <Name>Varioskan LUX</Name>
+          <FirmwareVersion>1.00.37</FirmwareVersion>
+          <SerialNumber>3020-656</SerialNumber>
+        </Device>
+        <Category name="Common Properties">
+          <Parameter name="Absorbtion Wavelength" parameterType="Float32">
+            <F>600</F>
+          </Parameter>
+        </Category>
+        <Category name="Instrument Properties">
+          <Parameter name="Description" parameterType="String">
+            <S>We used a Varioskan LUX , version 1.00.37, serial number 3020-656 running on Software: AiServer RE, ver. 5.0.0.42</S>
+          </Parameter>
+        </Category>
+      </Method>
+      <Result name="Read">
+        <SeriesSet name="Read" length="96">
+          <Series name="Position" seriesType="Int32" plotScale="none" dependency="independent" seriesID="absorbance">
+            <AutoIncrementedValueSet>
+              <StartValue>
+                <I>0</I>
+              </StartValue>
+              <Increment>
+                <I>1</I>
+              </Increment>
+            </AutoIncrementedValueSet>
+          </Series>
+          <Series name="Value" seriesType="Float32" plotScale="none" dependency="dependent" seriesID="absorbance">
+            <IndividualValueSet>
+              <F>0.0996</F>
+              <F>0.2146</F>
+              <F>0.1679</F>
+              <F>0.1395</F>
+              <F>0.1093</F>
+              <F>0.1304</F>
+              <F>0.1745</F>
+              <F>0.1283</F>
+              <F>0.1724</F>
+              <F>0.1373</F>
+              <F>0.1745</F>
+              <F>0.0712</F>
+              <F>0.1613</F>
+              <F>0.2482</F>
+              <F>0.2391</F>
+              <F>0.1391</F>
+              <F>0.1507</F>
+              <F>0.1211</F>
+              <F>0.1193</F>
+              <F>0.1288</F>
+              <F>0.1422</F>
+              <F>0.1711</F>
+              <F>0.1998</F>
+              <F>0.2015</F>
+              <F>0.1143</F>
+              <F>0.2405</F>
+              <F>0.2393</F>
+              <F>0.2371</F>
+              <F>0.1184</F>
+              <F>0.1273</F>
+              <F>0.1164</F>
+              <F>0.1238</F>
+              <F>0.1693</F>
+              <F>0.1414</F>
+              <F>0.172</F>
+              <F>0.1855</F>
+              <F>0.1148</F>
+              <F>0.1555</F>
+              <F>0.2224</F>
+              <F>0.217</F>
+              <F>0.1963</F>
+              <F>0.1773</F>
+              <F>0.1255</F>
+              <F>0.1598</F>
+              <F>0.195</F>
+              <F>0.1504</F>
+              <F>0.1694</F>
+              <F>0.1529</F>
+              <F>0.0995</F>
+              <F>0.131</F>
+              <F>0.1388</F>
+              <F>0.1896</F>
+              <F>0.1297</F>
+              <F>0.1134</F>
+              <F>0.212</F>
+              <F>0.1889</F>
+              <F>0.1244</F>
+              <F>0.118</F>
+              <F>0.1141</F>
+              <F>0.1325</F>
+              <F>0.099</F>
+              <F>0.1245</F>
+              <F>0.102</F>
+              <F>0.1709</F>
+              <F>0.1968</F>
+              <F>0.0913</F>
+              <F>0.108</F>
+              <F>0.1301</F>
+              <F>0.1114</F>
+              <F>0.122</F>
+              <F>0.1226</F>
+              <F>0.1289</F>
+              <F>0.1045</F>
+              <F>0.1829</F>
+              <F>0.2235</F>
+              <F>0.2136</F>
+              <F>0.197</F>
+              <F>0.1664</F>
+              <F>0.1438</F>
+              <F>0.1909</F>
+              <F>0.1245</F>
+              <F>0.1895</F>
+              <F>0.134</F>
+              <F>0.1187</F>
+              <F>0.0458</F>
+              <F>0.0999</F>
+              <F>0.097</F>
+              <F>0.104</F>
+              <F>0.1435</F>
+              <F>0.0875</F>
+              <F>0.0866</F>
+              <F>0.1121</F>
+              <F>0.1161</F>
+              <F>0.1796</F>
+              <F>0.1313</F>
+              <F>0.0489</F>
+            </IndividualValueSet>
+          </Series>
+          <Series name="Measurement Delay" seriesType="Float32" plotScale="none" dependency="dependent" seriesID="absorbance">
+            <IndividualValueSet>
+              <F>0.26</F>
+              <F>0.92</F>
+              <F>1.58</F>
+              <F>2.23</F>
+              <F>2.89</F>
+              <F>3.55</F>
+              <F>4.20</F>
+              <F>4.86</F>
+              <F>5.51</F>
+              <F>6.17</F>
+              <F>6.83</F>
+              <F>7.48</F>
+              <F>15.36</F>
+              <F>14.70</F>
+              <F>14.05</F>
+              <F>13.39</F>
+              <F>12.73</F>
+              <F>12.08</F>
+              <F>11.42</F>
+              <F>10.76</F>
+              <F>10.11</F>
+              <F>9.45</F>
+              <F>8.80</F>
+              <F>8.14</F>
+              <F>16.01</F>
+              <F>16.67</F>
+              <F>17.33</F>
+              <F>17.98</F>
+              <F>18.64</F>
+              <F>19.30</F>
+              <F>19.95</F>
+              <F>20.61</F>
+              <F>21.26</F>
+              <F>21.92</F>
+              <F>22.58</F>
+              <F>23.23</F>
+              <F>31.11</F>
+              <F>30.45</F>
+              <F>29.80</F>
+              <F>29.14</F>
+              <F>28.48</F>
+              <F>27.83</F>
+              <F>27.17</F>
+              <F>26.51</F>
+              <F>25.86</F>
+              <F>25.20</F>
+              <F>24.55</F>
+              <F>23.89</F>
+              <F>31.76</F>
+              <F>32.42</F>
+              <F>33.08</F>
+              <F>33.73</F>
+              <F>34.39</F>
+              <F>35.05</F>
+              <F>35.70</F>
+              <F>36.36</F>
+              <F>37.01</F>
+              <F>37.67</F>
+              <F>38.33</F>
+              <F>38.98</F>
+              <F>46.86</F>
+              <F>46.20</F>
+              <F>45.55</F>
+              <F>44.89</F>
+              <F>44.23</F>
+              <F>43.58</F>
+              <F>42.92</F>
+              <F>42.26</F>
+              <F>41.61</F>
+              <F>40.95</F>
+              <F>40.30</F>
+              <F>39.64</F>
+              <F>47.51</F>
+              <F>48.17</F>
+              <F>48.83</F>
+              <F>49.48</F>
+              <F>50.14</F>
+              <F>50.80</F>
+              <F>51.45</F>
+              <F>52.11</F>
+              <F>52.77</F>
+              <F>53.42</F>
+              <F>54.08</F>
+              <F>54.73</F>
+              <F>62.61</F>
+              <F>61.95</F>
+              <F>61.30</F>
+              <F>60.64</F>
+              <F>59.98</F>
+              <F>59.33</F>
+              <F>58.67</F>
+              <F>58.02</F>
+              <F>57.36</F>
+              <F>56.70</F>
+              <F>56.05</F>
+              <F>55.39</F>
+            </IndividualValueSet>
+          </Series>
+          <Series name="Saturated" seriesType="Boolean" plotScale="none" dependency="dependent" seriesID="absorbance">
+            <IndividualValueSet>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+            </IndividualValueSet>
+          </Series>
+          <Series name="Sample Group" seriesType="String" plotScale="none" dependency="dependent" seriesID="absorbance">
+            <IndividualValueSet>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+            </IndividualValueSet>
+          </Series>
+        </SeriesSet>
+      </Result>
+    </ExperimentStep>
+    <ExperimentStep name="absorbance_1" experimentStepID="insert correct ID">
+      <Technique name="Microplate Read" uri=""/>
+      <Infrastructure>
+        <SampleReferenceSet>
+          <SampleReference sampleID="plate_0" role="Test Sample" samplePurpose="consumed"/>
+        </SampleReferenceSet>
+        <Timestamp>2020-06-22T11:38:00</Timestamp>
+      </Infrastructure>
+      <Method>
+        <Author userType="software">
+          <Name>lara-w71pro-64\lara</Name>
+        </Author>
+        <Device>
+          <Name>Varioskan LUX</Name>
+          <FirmwareVersion>1.00.37</FirmwareVersion>
+          <SerialNumber>3020-656</SerialNumber>
+        </Device>
+        <Category name="Common Properties">
+          <Parameter name="Absorbtion Wavelength" parameterType="Float32">
+            <F>660</F>
+          </Parameter>
+        </Category>
+        <Category name="Instrument Properties">
+          <Parameter name="Description" parameterType="String">
+            <S>We used a Varioskan LUX , version 1.00.37, serial number 3020-656 running on Software: AiServer RE, ver. 5.0.0.42</S>
+          </Parameter>
+        </Category>
+      </Method>
+      <Result name="Read">
+        <SeriesSet name="Read" length="96">
+          <Series name="Position" seriesType="Int32" plotScale="none" dependency="independent" seriesID="absorbance">
+            <AutoIncrementedValueSet>
+              <StartValue>
+                <I>0</I>
+              </StartValue>
+              <Increment>
+                <I>1</I>
+              </Increment>
+            </AutoIncrementedValueSet>
+          </Series>
+          <Series name="Value" seriesType="Float32" plotScale="none" dependency="dependent" seriesID="absorbance">
+            <IndividualValueSet>
+              <F>0.0957</F>
+              <F>0.2123</F>
+              <F>0.1649</F>
+              <F>0.1361</F>
+              <F>0.1053</F>
+              <F>0.1271</F>
+              <F>0.1715</F>
+              <F>0.1237</F>
+              <F>0.1694</F>
+              <F>0.134</F>
+              <F>0.1717</F>
+              <F>0.0664</F>
+              <F>0.1601</F>
+              <F>0.2477</F>
+              <F>0.2379</F>
+              <F>0.1358</F>
+              <F>0.1474</F>
+              <F>0.1176</F>
+              <F>0.1158</F>
+              <F>0.1252</F>
+              <F>0.1391</F>
+              <F>0.1684</F>
+              <F>0.1975</F>
+              <F>0.1988</F>
+              <F>0.1109</F>
+              <F>0.2388</F>
+              <F>0.2373</F>
+              <F>0.2356</F>
+              <F>0.115</F>
+              <F>0.1241</F>
+              <F>0.1126</F>
+              <F>0.1203</F>
+              <F>0.1659</F>
+              <F>0.1383</F>
+              <F>0.1692</F>
+              <F>0.1828</F>
+              <F>0.1116</F>
+              <F>0.1545</F>
+              <F>0.2207</F>
+              <F>0.215</F>
+              <F>0.1942</F>
+              <F>0.1751</F>
+              <F>0.1222</F>
+              <F>0.1566</F>
+              <F>0.1927</F>
+              <F>0.1479</F>
+              <F>0.1665</F>
+              <F>0.1492</F>
+              <F>0.0959</F>
+              <F>0.1274</F>
+              <F>0.1356</F>
+              <F>0.1866</F>
+              <F>0.1254</F>
+              <F>0.1095</F>
+              <F>0.2097</F>
+              <F>0.1867</F>
+              <F>0.12</F>
+              <F>0.1139</F>
+              <F>0.1106</F>
+              <F>0.1288</F>
+              <F>0.0956</F>
+              <F>0.1209</F>
+              <F>0.0983</F>
+              <F>0.1682</F>
+              <F>0.194</F>
+              <F>0.087</F>
+              <F>0.1041</F>
+              <F>0.1266</F>
+              <F>0.1082</F>
+              <F>0.1191</F>
+              <F>0.1189</F>
+              <F>0.125</F>
+              <F>0.101</F>
+              <F>0.1804</F>
+              <F>0.2215</F>
+              <F>0.2116</F>
+              <F>0.1941</F>
+              <F>0.1632</F>
+              <F>0.14</F>
+              <F>0.1889</F>
+              <F>0.1207</F>
+              <F>0.1873</F>
+              <F>0.1302</F>
+              <F>0.1149</F>
+              <F>0.0414</F>
+              <F>0.0961</F>
+              <F>0.0933</F>
+              <F>0.1007</F>
+              <F>0.1405</F>
+              <F>0.0835</F>
+              <F>0.0828</F>
+              <F>0.1081</F>
+              <F>0.1134</F>
+              <F>0.1767</F>
+              <F>0.1274</F>
+              <F>0.0441</F>
+            </IndividualValueSet>
+          </Series>
+          <Series name="Measurement Delay" seriesType="Float32" plotScale="none" dependency="dependent" seriesID="absorbance">
+            <IndividualValueSet>
+              <F>0.26</F>
+              <F>0.92</F>
+              <F>1.58</F>
+              <F>2.23</F>
+              <F>2.89</F>
+              <F>3.55</F>
+              <F>4.20</F>
+              <F>4.86</F>
+              <F>5.51</F>
+              <F>6.17</F>
+              <F>6.83</F>
+              <F>7.48</F>
+              <F>15.36</F>
+              <F>14.70</F>
+              <F>14.05</F>
+              <F>13.39</F>
+              <F>12.73</F>
+              <F>12.08</F>
+              <F>11.42</F>
+              <F>10.76</F>
+              <F>10.11</F>
+              <F>9.45</F>
+              <F>8.80</F>
+              <F>8.14</F>
+              <F>16.01</F>
+              <F>16.67</F>
+              <F>17.33</F>
+              <F>17.98</F>
+              <F>18.64</F>
+              <F>19.30</F>
+              <F>19.95</F>
+              <F>20.61</F>
+              <F>21.26</F>
+              <F>21.92</F>
+              <F>22.58</F>
+              <F>23.23</F>
+              <F>31.11</F>
+              <F>30.45</F>
+              <F>29.80</F>
+              <F>29.14</F>
+              <F>28.48</F>
+              <F>27.83</F>
+              <F>27.17</F>
+              <F>26.51</F>
+              <F>25.86</F>
+              <F>25.20</F>
+              <F>24.55</F>
+              <F>23.89</F>
+              <F>31.76</F>
+              <F>32.42</F>
+              <F>33.08</F>
+              <F>33.73</F>
+              <F>34.39</F>
+              <F>35.05</F>
+              <F>35.70</F>
+              <F>36.36</F>
+              <F>37.01</F>
+              <F>37.67</F>
+              <F>38.33</F>
+              <F>38.98</F>
+              <F>46.86</F>
+              <F>46.20</F>
+              <F>45.55</F>
+              <F>44.89</F>
+              <F>44.23</F>
+              <F>43.58</F>
+              <F>42.92</F>
+              <F>42.26</F>
+              <F>41.61</F>
+              <F>40.95</F>
+              <F>40.30</F>
+              <F>39.64</F>
+              <F>47.51</F>
+              <F>48.17</F>
+              <F>48.83</F>
+              <F>49.48</F>
+              <F>50.14</F>
+              <F>50.80</F>
+              <F>51.45</F>
+              <F>52.11</F>
+              <F>52.77</F>
+              <F>53.42</F>
+              <F>54.08</F>
+              <F>54.73</F>
+              <F>62.61</F>
+              <F>61.95</F>
+              <F>61.30</F>
+              <F>60.64</F>
+              <F>59.98</F>
+              <F>59.33</F>
+              <F>58.67</F>
+              <F>58.02</F>
+              <F>57.36</F>
+              <F>56.70</F>
+              <F>56.05</F>
+              <F>55.39</F>
+            </IndividualValueSet>
+          </Series>
+          <Series name="Saturated" seriesType="Boolean" plotScale="none" dependency="dependent" seriesID="absorbance">
+            <IndividualValueSet>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+              <Boolean>false</Boolean>
+            </IndividualValueSet>
+          </Series>
+          <Series name="Sample Group" seriesType="String" plotScale="none" dependency="dependent" seriesID="absorbance">
+            <IndividualValueSet>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+              <S>Group 1</S>
+            </IndividualValueSet>
+          </Series>
+        </SeriesSet>
+      </Result>
+    </ExperimentStep>
+  </ExperimentStepSet>
+  <AuditTrailEntrySet/>
+</AnIML>
