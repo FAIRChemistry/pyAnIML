@@ -2,8 +2,8 @@ from typing import List
 
 from pydantic.dataclasses import dataclass
 from pydantic import validate_arguments
-from pyaniml.utility.utils import SchemaBase, element
-from pyaniml.core.sample import Sample
+from pyaniml.utility.utils import SchemaBase, element, attribute
+from pyaniml.core.sample import Sample, SampleReference
 
 
 @dataclass
@@ -48,3 +48,12 @@ class AuditTrailEntrySet(SchemaBase):
     @validate_arguments
     def add_audit_trail_entry(self, audit_trail_entry):
         self.audit_trail_entries.append(audit_trail_entry)
+
+
+@dataclass
+class SampleReferenceSet(SchemaBase):
+    """Container for references to samples that have been defined in the AnIMLDocument"""
+
+    sample_reference: SampleReference = element(
+        name="SampleReference", default=list
+    )

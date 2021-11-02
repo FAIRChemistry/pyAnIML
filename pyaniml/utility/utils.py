@@ -1,7 +1,7 @@
 
 import json
 
-from typing import Any, Dict
+from typing import Any, Dict, Optional
 from dataclasses import field
 from pydantic.json import pydantic_encoder
 
@@ -76,8 +76,8 @@ class SchemaBase:
 
 
 def _generateField(
-    name: str,
     type: str,
+    name: str = None,
     default: Any = None,
     choices: Dict[str, Any] = None,
     namespace: str = ""
@@ -86,11 +86,13 @@ def _generateField(
 
     # Declare dict type
     metadata_dict: Dict[str, Any] = dict(
-        name=name, type=type, namespace=namespace
+        type=type, namespace=namespace
     )
 
     if choices:
-        metadata_dict['choices'] = choices
+        metadata_dict["choices"] = choices
+    if name:
+        metadata_dict["name"] = name
 
     if default:
         return field(
@@ -103,7 +105,7 @@ def _generateField(
         )
 
 
-def attribute(name: str, default: Any = None):
+def attribute(name: str = None, default: Any = None):
     """Defines an attribute as an XML attribute.
 
         <parent name=XYZ />
@@ -118,7 +120,7 @@ def attribute(name: str, default: Any = None):
     return _generateField(name, 'Attribute', default)
 
 
-def element(name: str, default: Any = None):
+def element(name: str = None, default: Any = None):
     """Defines an attribute as an XML element.
 
         <name>XYZ</name>
