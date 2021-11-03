@@ -1,9 +1,7 @@
-from typing import List
-from pydantic.dataclasses import dataclass
-
+from dataclasses import dataclass
 from pyaniml.utility import element, SchemaBase
-
 from pyaniml.core.sample import Sample
+from pyaniml.core.experimentstep import ExperimentStep
 from pyaniml.core.sets import ExperimentStepSet
 from pyaniml.core.sets import SampleSet
 from pyaniml.core.sets import AuditTrailEntrySet
@@ -29,11 +27,18 @@ class AnIMLDocument(SchemaBase):
         name="AuditTrailEntrySet", default=AuditTrailEntrySet
     )
 
+    def add_sample(self, sample: Sample):
+        """Adds a sample to the sample set
 
-if __name__ == "__main__":
-    animldoc = AnIMLDocument()
-    animldoc.samples.add_sample(
-        Sample(sample_id="Lol", name="Lol")
-    )
+        Args:
+            sample (Sample): Container describing a sample
+        """
+        self.samples.add_sample(sample)
 
-    print(animldoc.toXML())
+    def add_experiment_step(self, experiment_step: ExperimentStep):
+        """Adds an experiment step to the experiment step set
+
+        Args:
+            experiment_step (ExperimentStep): Container describing an experiment step
+        """
+        self.experiment_steps.add_experiment_step(experiment_step)

@@ -1,8 +1,7 @@
 from typing import List
-
-from pydantic.dataclasses import dataclass
+from dataclasses import dataclass
 from pydantic import validate_arguments
-from pyaniml.utility.utils import SchemaBase, element, attribute
+from pyaniml.utility.utils import SchemaBase, element
 from pyaniml.core.sample import Sample, SampleReference
 
 
@@ -27,7 +26,6 @@ class SampleSet(SchemaBase):
         name="Sample", default=list
     )
 
-    @validate_arguments
     def add_sample(self, sample: Sample) -> None:
         """Adds a sample to a sample set.
 
@@ -35,6 +33,28 @@ class SampleSet(SchemaBase):
             sample (Sample): Object describing a sample.
         """
         self.samples.append(sample)
+
+
+@dataclass
+class SampleReferenceSet(SchemaBase):
+    """Container for references to samples that have been defined in the AnIMLDocument"""
+
+    sample_references: List[SampleReference] = element(
+        name="SampleReference", default=list
+    )
+
+    def add_reference(self, sample: Sample, role: str, sample_purpose: str):
+        """Adds a sample reference to a sample set.
+
+        Args:
+            sample (Sample): Sample object to ensure correct ID assigment
+            role (str): The role of the sample.
+            sample_purpose (str): The purpose of the sample.
+        """
+        self.sample_references.append(
+            SampleReference.from_sample(
+                sample=sample, role=role, sample_purpose=sample_purpose)
+        )
 
 
 @dataclass
@@ -48,12 +68,3 @@ class AuditTrailEntrySet(SchemaBase):
     @validate_arguments
     def add_audit_trail_entry(self, audit_trail_entry):
         self.audit_trail_entries.append(audit_trail_entry)
-
-
-@dataclass
-class SampleReferenceSet(SchemaBase):
-    """Container for references to samples that have been defined in the AnIMLDocument"""
-
-    sample_reference: SampleReference = element(
-        name="SampleReference", default=list
-    )

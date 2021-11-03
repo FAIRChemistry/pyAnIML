@@ -1,9 +1,10 @@
 
 import json
 
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Tuple
 from dataclasses import field
 from pydantic.json import pydantic_encoder
+from pydantic import validate_arguments
 
 from xsdata.formats.dataclass.serializers import XmlSerializer
 from xsdata.formats.dataclass.serializers.config import SerializerConfig
@@ -75,11 +76,13 @@ class SchemaBase:
         return cls.__pydantic_model__.parse_raw(json_string)
 
 
+@validate_arguments
 def _generateField(
     type: str,
     name: str = None,
     default: Any = None,
-    choices: Dict[str, Any] = None,
+    default_value: Any = None,
+    choices: Tuple[Dict[str, Any], ...] = None,
     namespace: str = ""
 ):
     """Metafunction to generate a valid field for later XML serialization."""
@@ -89,47 +92,71 @@ def _generateField(
         type=type, namespace=namespace
     )
 
+    param_dict: Dict[str, Any] = {}
+
     if choices:
         metadata_dict["choices"] = choices
     if name:
         metadata_dict["name"] = name
 
     if default:
-        return field(
-            default_factory=default,
-            metadata=metadata_dict,
-        )
-    else:
-        return field(
-            metadata=metadata_dict,
-        )
+        param_dict["default_factory"] = default
+    if default_value:
+        param_dict["default_value"] = default_value
+
+    return field(**param_dict, metadata=metadata_dict)
 
 
-def attribute(name: str = None, default: Any = None):
+@validate_arguments
+def attribute(name: str = None, default: Any = None, default_value: Any = None):
     """Defines an attribute as an XML attribute.
 
         <parent name=XYZ />
 
     Args:
         name (str): The name of the attribute
-        default (Any, optional): Default value. Defaults to None.
+        default (Any, optional): Default callable for mutable data types. Defaults to None.
 
     Returns:
-        field: Dataclass Field element, which adds all teh metadata needed to generate an XML
+        field: Dataclass Field element, which adds all teh metadata needed to generate an XML model
     """
-    return _generateField(name, 'Attribute', default)
+    return _generateField(
+        type="Attribute", name=name, default=default, default_value=default_value
+    )
 
 
-def element(name: str = None, default: Any = None):
+@validate_arguments
+def element(name: str = None, default: Any = None, default_value: Any = None):
     """Defines an attribute as an XML element.
 
         <name>XYZ</name>
 
     Args:
         name (str): The name of the attribute
-        default (Any, optional): Default value. Defaults to None.
+        default (Any, optional): Default callable for mutable data types. Defaults to None.
 
     Returns:
-        field: Dataclass Field element, which adds all teh metadata needed to generate an XML
+        field: Dataclass Field element, which adds all teh metadata needed to generate an XML model
     """
-    return _generateField(name, 'Element', default)
+    return _generateField(
+        type="Element", name=name, default=default, default_value=default_value
+    )
+
+
+@validate_arguments
+def elements(choices: Tuple[dict[str, Any], ...], default: Any = None):
+    """Defines an xsd:choices reference as an XML element.
+
+        <choices1>XYZ</choices1>
+        <choices2>XYZ</choices2>
+
+    Args:
+        choices (str): The types of elements that can be defined in the model.
+        default (Any, optional): Default callable for mutable data types. Defaults to None.
+
+    Returns:
+        field: Dataclass Field element, which adds all teh metadata needed to generate an XML model
+    """
+    return _generateField(
+        type="Elements", choices=choices, default=default
+    )

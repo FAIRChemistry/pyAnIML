@@ -1,9 +1,19 @@
-from typing import List, Any
+import pydantic
 
-from pydantic import validator
-from pydantic.dataclasses import dataclass
-from pyaniml.utility.utils import SchemaBase, element, attribute
-from pyaniml.core.enums import parameter_types, dependencies
+from typing import List
+from dataclasses import dataclass
+from pyaniml.utility.utils import SchemaBase, element, attribute, elements
+from pyaniml.core.enums import data_types, dependencies, type_inference
+
+
+@dataclass
+class IndividualValueSet(SchemaBase):
+    """Container holding individual values of a measurement"""
+
+    decimals: List[float] = element(name="F", default=list)
+    integers: List[int] = element(name="I", default=list)
+    booleans: List[bool] = element(name="Boolean", default=list)
+    strings: List[str] = element(name="S", default=list)
 
 
 @dataclass
@@ -12,37 +22,28 @@ class Series(SchemaBase):
 
     name: str = attribute()
     id: str = attribute(name="seriesID")
+    data: IndividualValueSet = element(name="IndividualValueSet")
     data_type: str = attribute(name="SeriesType")
     dependency: str = attribute()
-    plot_scale: str = attribute(name="plotScale", default="none")
+    plot_scale: str = attribute(name="plotScale")
 
     # Validators
-    @validator("data_type")
-    def verify_data_type(cls, data_type):
-        if data_type not in parameter_types.values:
+    @staticmethod
+    def verify_data_type(data_type):
+        if data_type not in data_types.values:
             raise TypeError(
-                f"Invalid data type. Please choose from {parameter_types.values()}"
+                f"Invalid data type. Please choose from {data_types.values()}"
             )
 
-    @validator("dependency")
-    def verify_dependency(cls, dependency):
+    @staticmethod
+    def verify_dependency(dependency):
         if dependency not in dependencies:
             raise TypeError(
                 f"Unknown dependency argument '{dependency}'. Please choose from {dependencies}"
             )
 
 
-@dataclass
-def IndividualValueSet(SchemaBase):
-    """Container holding individual values of a measurement"""
-
-    def add_data(self, data: List[Any]) -> None:
-        self.data: Any = element(
-            name=parameter_types.get()
-        )
-
-
-@dataclass
+@ dataclass
 class SeriesSet(SchemaBase):
     """Container for multi-dimensional datasets"""
 

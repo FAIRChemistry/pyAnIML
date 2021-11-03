@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AnIML>
+    <SampleSet>
+        <Sample sampleID="S1" name="Sample1">
+            <Category name="Specific set of parameters that need to be grouped">
+                <Parameter name="Param1" parameterType="Int32">
+                    <I>10</I>
+                </Parameter>
+                <Parameter name="Param2" parameterType="String">
+                    <S>Some kind of description</S>
+                </Parameter>
+            </Category>
+            <Parameter name="Param3" parameterType="String">
+                <S>I am not part of a category</S>
+            </Parameter>
+        </Sample>
+    </SampleSet>
+    <ExperimentStepSet>
+        <ExperimentStep name="First step" experimentStepID="ES1">
+            <Infrastructure>
+                <SampleReferenceSet>
+                    <SampleReference sampleID="S1" role="Shows a reference" samplePurpose="Educational"/>
+                </SampleReferenceSet>
+            </Infrastructure>
+            <Method>
+                <Category name="Device Setup">
+                    <Parameter name="Volume control" parameterType="Int32">
+                        <I>100</I>
+                    </Parameter>
+                    <Parameter name="Program" parameterType="String">
+                        <S>Full power!</S>
+                    </Parameter>
+                </Category>
+                <Device>
+                    <Name>Cool device</Name>
+                    <FirmwareVersion>1.0</FirmwareVersion>
+                    <SerialNumber>126656563</SerialNumber>
+                </Device>
+            </Method>
+            <Result>
+                <SeriesSet name="Sound output">
+                    <Series name="Frequency" seriesID="Freq1" SeriesType="Float32" dependency="dependent" plotScale="none">
+                        <IndividualValueSet>
+                            <F>1.2</F>
+                            <F>2.4</F>
+                            <F>5.6</F>
+                        </IndividualValueSet>
+                    </Series>
+                    <Series name="Amplitude" seriesID="Amp1" SeriesType="Float32" dependency="independet" plotScale="none">
+                        <IndividualValueSet>
+                            <F>20.2</F>
+                            <F>22.4</F>
+                            <F>53.6</F>
+                        </IndividualValueSet>
+                    </Series>
+                </SeriesSet>
+            </Result>
+        </ExperimentStep>
+    </ExperimentStepSet>
+    <AuditTrailEntrySet/>
+</AnIML>
