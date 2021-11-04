@@ -21,7 +21,7 @@ class AnIMLDocument(SchemaBase):
         name="ExperimentStepSet", default=ExperimentStepSet
     )
 
-    audit_tray_entries: AuditTrailEntrySet = element(
+    audit_trail_entries: AuditTrailEntrySet = element(
         name="AuditTrailEntrySet", default=AuditTrailEntrySet
     )
 
