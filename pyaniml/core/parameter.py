@@ -10,10 +10,10 @@ class Parameter(SchemaBase):
 
     name: str = attribute()
     parameter_type: str = attribute(name="parameterType")
-    value: object = elements(choices=type_inference)
+    value: List[object] = elements(choices=type_inference)
 
 
-@dataclass
+@ dataclass
 class Category(SchemaBase):
     """Container holding a category description wit multiple parameters"""
 

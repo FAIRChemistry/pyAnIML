@@ -13,7 +13,7 @@ class AnIMLDocument(SchemaBase):
 
     class Meta:
         name = "AnIML"
-        namespace = "urn:org:astm:animl:schema:core:draft:0.90"
+        # namespace = "urn:org:astm:animl:schema:core:draft:0.90"
 
     samples: SampleSet = element(
         name="SampleSet", default=SampleSet

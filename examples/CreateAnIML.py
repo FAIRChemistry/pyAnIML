@@ -23,7 +23,7 @@ device = Device(name="Device", firmware_version="1.0", serial_number="123")
 exp_step.add_method(device)
 
 # Create result
-data = IndividualValueSet(integers=[1, 2, 3, 4, 5])
+data = IndividualValueSet(data=[1, 2, 3, 4, 5])
 series = Series(name="Series", id="Series1", data=data,
                 data_type="Int32", dependency="dependent", plot_scale="none"
                 )

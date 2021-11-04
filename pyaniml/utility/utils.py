@@ -1,12 +1,10 @@
 
-import json
-
 from typing import Any, Dict, Tuple
 from dataclasses import field
 from pydantic.json import pydantic_encoder
 from pydantic import validate_arguments
 
-from xsdata.formats.dataclass.serializers import XmlSerializer
+from xsdata.formats.dataclass.serializers import XmlSerializer, JsonSerializer
 from xsdata.formats.dataclass.serializers.config import SerializerConfig
 from xsdata.formats.dataclass.context import XmlContext
 from xsdata.formats.dataclass.parsers import XmlParser
@@ -24,7 +22,7 @@ class SchemaBase:
         serializer = XmlSerializer(config=config)
         return serializer.render(self)
 
-    def toJSON(self, indent: int = 2) -> str:
+    def toJSON(self) -> str:
         """Serializes an abstract data model to JSON.
 
         Args:
@@ -33,11 +31,9 @@ class SchemaBase:
         Returns:
             str: JSON data model as string.
         """
-        return json.dumps(
-            self,
-            indent=indent,
-            default=pydantic_encoder
-        )
+        config = SerializerConfig(pretty_print=True)
+        serializer = JsonSerializer(context=XmlContext(), config=config)
+        return serializer.render(self)
 
     def toDict(self) -> str:
         """Serializes an abstract data model to a dictionary.
@@ -89,7 +85,7 @@ def _generateField(
 
     # Declare dict type
     metadata_dict: Dict[str, Any] = dict(
-        type=type, namespace=namespace
+        type=type
     )
 
     param_dict: Dict[str, Any] = {}
@@ -102,7 +98,7 @@ def _generateField(
     if default:
         param_dict["default_factory"] = default
     if default_value:
-        param_dict["default_value"] = default_value
+        param_dict["default"] = default_value
 
     return field(**param_dict, metadata=metadata_dict)
 

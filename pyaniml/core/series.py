@@ -10,10 +10,10 @@ from pyaniml.core.enums import data_types, dependencies, type_inference
 class IndividualValueSet(SchemaBase):
     """Container holding individual values of a measurement"""
 
-    decimals: List[float] = element(name="F", default=list)
-    integers: List[int] = element(name="I", default=list)
-    booleans: List[bool] = element(name="Boolean", default=list)
-    strings: List[str] = element(name="S", default=list)
+    data: List[object] = elements(
+        default=list,
+        choices=type_inference
+    )
 
 
 @dataclass
