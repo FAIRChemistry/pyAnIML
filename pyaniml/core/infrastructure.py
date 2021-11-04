@@ -1,7 +1,6 @@
 from dataclasses import dataclass
 from pyaniml.utility.utils import SchemaBase, element
-from pyaniml.core.sample import Sample
-from pyaniml.core.sets import SampleReferenceSet
+from pyaniml.core.sample import Sample, SampleReferenceSet
 
 
 @dataclass

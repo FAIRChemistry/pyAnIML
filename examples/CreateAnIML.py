@@ -33,4 +33,4 @@ exp_step.add_result(series)
 animldoc.add_experiment_step(exp_step)
 
 xml_string = animldoc.toXML()
-print(xml_string)
+print(AnIMLDocument.fromXMLString(xml_string))

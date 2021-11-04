@@ -1,4 +1,5 @@
-from typing import Union
+from typing import Union, List
+from pydantic import validate_arguments
 from dataclasses import dataclass
 from pyaniml.utility import attribute, element, SchemaBase
 from pyaniml.core.sample import Sample
@@ -56,3 +57,20 @@ class ExperimentStep(SchemaBase):
             result (Union[Series, SeriesSet, Parameter, Category]): Characteristics of a result.
         """
         self.result.add_result(result)
+
+
+@dataclass
+class ExperimentStepSet(SchemaBase):
+    """Container for experiment steps"""
+
+    experiment_steps: List[ExperimentStep] = element(
+        name="ExperimentStep", default=list
+    )
+
+    def add_experiment_step(self, experiment_step: ExperimentStep) -> None:
+        """Adds an experiment step to the experiment set.
+
+        Args:
+            experiment_step (ExperimentStep): Object describing an experiment step.
+        """
+        self.experiment_steps.append(experiment_step)
