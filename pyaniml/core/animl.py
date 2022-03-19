@@ -13,15 +13,13 @@ class AnIMLDocument(SchemaBase):
         name = "AnIML"
         # namespace = "urn:org:astm:animl:schema:core:draft:0.90"
 
-    samples: SampleSet = element(
-        name="SampleSet", default=SampleSet
-    )
+    sample_set: SampleSet = element(name="SampleSet", default=SampleSet)
 
-    experiment_steps: ExperimentStepSet = element(
+    experiment_step_set: ExperimentStepSet = element(
         name="ExperimentStepSet", default=ExperimentStepSet
     )
 
-    audit_trail_entries: AuditTrailEntrySet = element(
+    audit_trail_entry_set: AuditTrailEntrySet = element(
         name="AuditTrailEntrySet", default=AuditTrailEntrySet
     )
 
@@ -31,7 +29,7 @@ class AnIMLDocument(SchemaBase):
         Args:
             sample (Sample): Container describing a sample
         """
-        self.samples.add_sample(sample)
+        self.sample_set.add_sample(sample)
 
     def add_experiment_step(self, experiment_step):
         """Adds an experiment step to the experiment step set
@@ -39,4 +37,4 @@ class AnIMLDocument(SchemaBase):
         Args:
             experiment_step (ExperimentStep): Container describing an experiment step
         """
-        self.experiment_steps.add_experiment_step(experiment_step)
+        self.experiment_step_set.add_experiment_step(experiment_step)
