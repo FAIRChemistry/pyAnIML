@@ -17,3 +17,14 @@ class AuditTrailEntrySet(SchemaBase):
     @validate_arguments
     def add_audit_trail_entry(self, audit_trail_entry):
         self.audit_trail_entries.append(audit_trail_entry)
+
+
+@dataclass
+class SignatureSet(SchemaBase):
+    """Container for digital signatures"""
+
+    signatures: List[str] = element(name="Signature", default=list)
+
+    @validate_arguments
+    def add_signature(self, signature):
+        self.signatures.append(signature)

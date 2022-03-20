@@ -23,14 +23,12 @@ class ExperimentStep(SchemaBase):
     infrastructure: Infrastructure = element(
         name="Infrastructure", default=Infrastructure
     )
-    method: Method = element(
-        name="Method", default=Method
-    )
-    result: Result = element(
-        name="Result", default=Result
-    )
+    method: Method = element(name="Method", default=Method)
+    result: Result = element(name="Result", default=Result)
 
-    def add_sample_reference(self, sample: Sample, role: str, sample_purpose: str):
+    def add_sample_reference(
+        self, sample: Sample, role: str, sample_purpose: str
+    ):
         """Adds a sample to the infrastructure and creates a Reference.
 
         Args:
@@ -42,7 +40,9 @@ class ExperimentStep(SchemaBase):
             sample=sample, role=role, sample_purpose=sample_purpose
         )
 
-    def add_method(self, method: Union[Device, Author, Parameter, Category]) -> None:
+    def add_method(
+        self, method: Union[Device, Author, Parameter, Category]
+    ) -> None:
         """Adds a method-related property to the Method section of an experiment step
 
         Args:
@@ -50,7 +50,7 @@ class ExperimentStep(SchemaBase):
         """
         self.method.add_method(method)
 
-    def add_result(self, result: Union[Series, SeriesSet, Parameter, Category]) -> None:
+    def add_result(self, result: Union[SeriesSet, Parameter]) -> None:
         """Adds a result to the Result section of an experiment step
 
         Args:

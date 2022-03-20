@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from typing import List, Union
 from pyaniml.utility.utils import attribute, elements, element, SchemaBase
 from pyaniml.core.parameter import Parameter, Category
+from pyaniml.core.enums import purposes
 
 
 @dataclass
@@ -13,9 +14,9 @@ class Sample(SchemaBase):
     properties: List[object] = elements(
         choices=(
             {"name": "Parameter", "type": Parameter},
-            {"name": "Category", "type": Category}
+            {"name": "Category", "type": Category},
         ),
-        default=list
+        default=list,
     )
 
     def add_property(self, property: Union[Parameter, Category]) -> None:
@@ -35,12 +36,17 @@ class SampleReference(SchemaBase):
     role: str = attribute(name="role")
     sample_purpose: str = attribute(name="samplePurpose")
 
+    @staticmethod
+    def verify_sample_purpose(sample_purpose):
+        if sample_purpose not in purposes:
+            raise TypeError(
+                f"Unknown dependency argument '{sample_purpose}'. Please choose from {purposes}"
+            )
+
     @classmethod
     def from_sample(cls, sample: Sample, role: str, sample_purpose: str):
         return cls(
-            sample_id=sample.id,
-            role=role,
-            sample_purpose=sample_purpose
+            sample_id=sample.id, role=role, sample_purpose=sample_purpose
         )
 
 
@@ -48,9 +54,7 @@ class SampleReference(SchemaBase):
 class SampleSet(SchemaBase):
     """Container for samples"""
 
-    samples: List[Sample] = element(
-        name="Sample", default=list
-    )
+    samples: List[Sample] = element(name="Sample", default=list)
 
     def add_sample(self, sample: Sample) -> None:
         """Adds a sample to a sample set.
@@ -79,5 +83,6 @@ class SampleReferenceSet(SchemaBase):
         """
         self.sample_references.append(
             SampleReference.from_sample(
-                sample=sample, role=role, sample_purpose=sample_purpose)
+                sample=sample, role=role, sample_purpose=sample_purpose
+            )
         )

@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from pyaniml.utility import element, SchemaBase
 from pyaniml.core.experimentstep import ExperimentStepSet
 from pyaniml.core.sample import SampleSet
-from pyaniml.core.sets import AuditTrailEntrySet
+from pyaniml.core.sets import AuditTrailEntrySet, SignatureSet
 
 
 @dataclass
@@ -21,6 +21,10 @@ class AnIMLDocument(SchemaBase):
 
     audit_trail_entry_set: AuditTrailEntrySet = element(
         name="AuditTrailEntrySet", default=AuditTrailEntrySet
+    )
+
+    signature_set: SignatureSet = element(
+        name="SignatureSet", default=SignatureSet
     )
 
     def add_sample(self, sample):
