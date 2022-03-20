@@ -23,3 +23,6 @@ dependencies = ["dependent", "independent"]
 
 # Purpose enum describing supported sample purposes
 purposes = ["produced", "consumed"]
+
+# User types allowed for Author in Method of ExperimentStep
+user_types = ["human", "device", "software"]

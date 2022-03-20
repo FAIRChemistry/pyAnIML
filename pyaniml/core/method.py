@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 from typing import List, Union
 from pyaniml.utility.utils import SchemaBase, attribute, element, elements
-from pyaniml.core.parameter import Parameter
-from pyaniml.core.parameter import Category
+from pyaniml.core.parameter import Category, Parameter
+from pyaniml.core.enums import user_types
 
 
 @dataclass
@@ -37,6 +37,13 @@ class Author(SchemaBase):
     email: str = element("Email")
     phone: str = element("Phone")
     location: str = element("Location")
+
+    @staticmethod
+    def verify_user_type(user_type):
+        if user_type not in user_types:
+            raise TypeError(
+                f"Unknown dependency argument '{user_type}'. Please choose from {user_types}"
+            )
 
 
 @dataclass
