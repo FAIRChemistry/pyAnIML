@@ -54,7 +54,7 @@ class Method(SchemaBase):
         choices=(
             {"name": "Author", "type": Author},
             {"name": "Device", "type": Device},
-            {"name": "Device", "type": Software},
+            {"name": "Software", "type": Software},
             {"name": "Category", "type": Category},
         ),
         default=list,
