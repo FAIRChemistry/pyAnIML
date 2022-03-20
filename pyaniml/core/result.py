@@ -21,6 +21,6 @@ class Result(SchemaBase):
         """Adds a measurement result to the the container. Must be of any low-level AnIML type.
 
         Args:
-            result (Union[Series, SeriesSet, Parameter, Category]): The quantitive measurement results.
+            result (Union[SeriesSet, Category]): The quantitive measurement results.
         """
         self.results.append(result)

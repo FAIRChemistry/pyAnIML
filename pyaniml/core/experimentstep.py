@@ -8,9 +8,7 @@ from pyaniml.core.result import Result
 from pyaniml.core.method import Method, Software
 from pyaniml.core.method import Device
 from pyaniml.core.method import Author
-from pyaniml.core.parameter import Parameter
 from pyaniml.core.parameter import Category
-from pyaniml.core.series import Series
 from pyaniml.core.series import SeriesSet
 
 
@@ -41,20 +39,20 @@ class ExperimentStep(SchemaBase):
         )
 
     def add_method(
-        self, method: Union[Software, Device, Author, Parameter, Category]
+        self, method: Union[Author, Device, Software, Category]
     ) -> None:
         """Adds a method-related property to the Method section of an experiment step
 
         Args:
-            method (Union[Device, Author, Parameter, Category]): Characteristics of a method.
+            method (Union[Author, Device, Software, Category]): Characteristics of a method.
         """
         self.method.add_method(method)
 
-    def add_result(self, result: Union[SeriesSet, Parameter]) -> None:
+    def add_result(self, result: Union[SeriesSet, Category]) -> None:
         """Adds a result to the Result section of an experiment step
 
         Args:
-            result (Union[Series, SeriesSet, Parameter, Category]): Characteristics of a result.
+            result (Union[SeriesSet, Category]): Characteristics of a result.
         """
         self.result.add_result(result)
 

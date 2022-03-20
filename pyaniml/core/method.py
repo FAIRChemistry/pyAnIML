@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import List, Union
 from pyaniml.utility.utils import SchemaBase, attribute, element, elements
-from pyaniml.core.parameter import Category, Parameter
+from pyaniml.core.parameter import Category
 from pyaniml.core.enums import user_types
 
 
@@ -52,21 +52,18 @@ class Method(SchemaBase):
 
     methods: List[object] = elements(
         choices=(
-            {"name": "Device", "type": Software},
-            {"name": "Device", "type": Device},
             {"name": "Author", "type": Author},
-            {"name": "Parameter", "type": Parameter},
+            {"name": "Device", "type": Device},
+            {"name": "Device", "type": Software},
             {"name": "Category", "type": Category},
         ),
         default=list,
     )
 
-    def add_method(
-        self, method: Union[Software, Device, Author, Parameter, Category]
-    ):
+    def add_method(self, method: Union[Author, Device, Software, Category]):
         """Adds a method-related property to the Method section of an experiment step
 
         Args:
-            method (Union[Device, Author, Parameter, Category]): Characteristics of a method.
+            method (Union[Author, Device, Software, Category]): Characteristics of a method.
         """
         self.methods.append(method)

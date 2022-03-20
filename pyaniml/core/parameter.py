@@ -19,21 +19,18 @@ class Category(SchemaBase):
     """Container holding a category description with multiple parameters"""
 
     name: str = attribute()
-    categories: List[object] = elements(
+    content: List[object] = elements(
         choices=(
-            {"name": "Series", "type": Series},
-            {"name": "SeriesSet", "type": SeriesSet},
             {"name": "Parameter", "type": Parameter},
+            {"name": "SeriesSet", "type": SeriesSet},
         ),
         default=list,
     )
 
-    def add_category(
-        self, category: Union[Series, SeriesSet, Parameter]
-    ) -> None:
+    def add_content(self, content: Union[Parameter, SeriesSet]) -> None:
         """Adds a category to the the container. Must be of any low-level AnIML type.
 
         Args:
-            category (Union[Series, SeriesSet, Parameter, Category]): A category of results.
+            category (Union[Parameter, SeriesSet]): A category of results.
         """
-        self.categories.append(category)
+        self.content.append(content)
