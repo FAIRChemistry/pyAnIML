@@ -9,8 +9,8 @@ from pyaniml.core.enums import purposes
 class Sample(SchemaBase):
     """Describes an experiment sample"""
 
-    id: str = attribute(name="sampleID")
     name: str = attribute(name="name")
+    id: str = attribute(name="sampleID")
     properties: List[object] = elements(
         choices=(
             {"name": "Parameter", "type": Parameter},

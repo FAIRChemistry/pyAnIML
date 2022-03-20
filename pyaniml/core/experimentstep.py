@@ -5,7 +5,7 @@ from pyaniml.utility import attribute, element, SchemaBase
 from pyaniml.core.sample import Sample
 from pyaniml.core.infrastructure import Infrastructure
 from pyaniml.core.result import Result
-from pyaniml.core.method import Method
+from pyaniml.core.method import Method, Software
 from pyaniml.core.method import Device
 from pyaniml.core.method import Author
 from pyaniml.core.parameter import Parameter
@@ -41,7 +41,7 @@ class ExperimentStep(SchemaBase):
         )
 
     def add_method(
-        self, method: Union[Device, Author, Parameter, Category]
+        self, method: Union[Software, Device, Author, Parameter, Category]
     ) -> None:
         """Adds a method-related property to the Method section of an experiment step
 
