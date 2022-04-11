@@ -5,12 +5,10 @@ from pyaniml.utility import attribute, element, SchemaBase
 from pyaniml.core.sample import Sample
 from pyaniml.core.infrastructure import Infrastructure
 from pyaniml.core.result import Result
-from pyaniml.core.method import Method
+from pyaniml.core.method import Method, Software
 from pyaniml.core.method import Device
 from pyaniml.core.method import Author
-from pyaniml.core.parameter import Parameter
 from pyaniml.core.parameter import Category
-from pyaniml.core.series import Series
 from pyaniml.core.series import SeriesSet
 
 
@@ -23,14 +21,12 @@ class ExperimentStep(SchemaBase):
     infrastructure: Infrastructure = element(
         name="Infrastructure", default=Infrastructure
     )
-    method: Method = element(
-        name="Method", default=Method
-    )
-    result: Result = element(
-        name="Result", default=Result
-    )
+    method: Method = element(name="Method", default=Method)
+    result: Result = element(name="Result", default=Result)
 
-    def add_sample_reference(self, sample: Sample, role: str, sample_purpose: str):
+    def add_sample_reference(
+        self, sample: Sample, role: str, sample_purpose: str
+    ):
         """Adds a sample to the infrastructure and creates a Reference.
 
         Args:
@@ -42,19 +38,21 @@ class ExperimentStep(SchemaBase):
             sample=sample, role=role, sample_purpose=sample_purpose
         )
 
-    def add_method(self, method: Union[Device, Author, Parameter, Category]) -> None:
+    def add_method(
+        self, method: Union[Author, Device, Software, Category]
+    ) -> None:
         """Adds a method-related property to the Method section of an experiment step
 
         Args:
-            method (Union[Device, Author, Parameter, Category]): Characteristics of a method.
+            method (Union[Author, Device, Software, Category]): Characteristics of a method.
         """
         self.method.add_method(method)
 
-    def add_result(self, result: Union[Series, SeriesSet, Parameter, Category]) -> None:
+    def add_result(self, result: Union[SeriesSet, Category]) -> None:
         """Adds a result to the Result section of an experiment step
 
         Args:
-            result (Union[Series, SeriesSet, Parameter, Category]): Characteristics of a result.
+            result (Union[SeriesSet, Category]): Characteristics of a result.
         """
         self.result.add_result(result)
 

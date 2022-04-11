@@ -10,10 +10,7 @@ from pyaniml.core.enums import data_types, dependencies, type_inference
 class IndividualValueSet(SchemaBase):
     """Container holding individual values of a measurement"""
 
-    data: List[object] = elements(
-        default=list,
-        choices=type_inference
-    )
+    data: List[object] = elements(default=list, choices=type_inference)
 
 
 @dataclass
@@ -22,7 +19,9 @@ class Series(SchemaBase):
 
     name: str = attribute()
     id: str = attribute(name="seriesID")
-    data: IndividualValueSet = element(name="IndividualValueSet")
+    individual_value_set: IndividualValueSet = element(
+        name="IndividualValueSet"
+    )
     data_type: str = attribute(name="SeriesType")
     dependency: str = attribute()
     plot_scale: str = attribute(name="plotScale")
@@ -43,11 +42,9 @@ class Series(SchemaBase):
             )
 
 
-@ dataclass
+@dataclass
 class SeriesSet(SchemaBase):
     """Container for multi-dimensional datasets"""
 
     name: str = attribute()
-    series: List[Series] = element(
-        name="Series", default=list
-    )
+    series: List[Series] = element(name="Series", default=list)

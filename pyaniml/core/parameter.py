@@ -1,6 +1,7 @@
-from typing import List
+from typing import List, Union
 from dataclasses import dataclass
-from pyaniml.utility.utils import SchemaBase, element, attribute, elements
+from pyaniml.core.series import Series, SeriesSet
+from pyaniml.utility.utils import SchemaBase, attribute, elements
 from pyaniml.core.enums import type_inference
 
 
@@ -13,9 +14,23 @@ class Parameter(SchemaBase):
     value: List[object] = elements(choices=type_inference)
 
 
-@ dataclass
+@dataclass
 class Category(SchemaBase):
-    """Container holding a category description wit multiple parameters"""
+    """Container holding a category description with multiple parameters"""
 
     name: str = attribute()
-    parameters: List[Parameter] = element(default=list, name="Parameter")
+    content: List[object] = elements(
+        choices=(
+            {"name": "Parameter", "type": Parameter},
+            {"name": "SeriesSet", "type": SeriesSet},
+        ),
+        default=list,
+    )
+
+    def add_content(self, content: Union[Parameter, SeriesSet]) -> None:
+        """Adds a category to the the container. Must be of any low-level AnIML type.
+
+        Args:
+            category (Union[Parameter, SeriesSet]): A category of results.
+        """
+        self.content.append(content)
