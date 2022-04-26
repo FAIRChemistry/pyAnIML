@@ -13,3 +13,4 @@ from pyaniml.core import Method
 from pyaniml.core import Device
 from pyaniml.core import Result
 from pyaniml.core import Unit
+from pyaniml.core import SIUnit
