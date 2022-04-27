@@ -1,10 +1,7 @@
-import pydantic
-
 from typing import List
 from dataclasses import dataclass
 from pyaniml.utility.utils import SchemaBase, element, attribute, elements
 from pyaniml.core.enums import data_types, dependencies, type_inference
-# from pyaniml.core.unit import Unit
 
 
 @dataclass
@@ -23,7 +20,6 @@ class Series(SchemaBase):
     individual_value_set: IndividualValueSet = element(
         name="IndividualValueSet"
     )
-    # unit: Unit = element(names="Unit")
     data_type: str = attribute(name="SeriesType")
     dependency: str = attribute()
     plot_scale: str = attribute(name="plotScale")
