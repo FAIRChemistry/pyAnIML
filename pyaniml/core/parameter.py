@@ -1,7 +1,8 @@
 from typing import List, Union
 from dataclasses import dataclass
 from pyaniml.core.series import SeriesSet
-from pyaniml.core.unit import Unit
+
+# from pyaniml.core.unit import Unit
 from pyaniml.utility.utils import SchemaBase, attribute, element, elements
 from pyaniml.core.enums import type_inference
 
@@ -12,7 +13,7 @@ class Parameter(SchemaBase):
 
     name: str = attribute()
     parameter_type: str = attribute(name="parameterType")
-    unit: Unit = element(name="Unit")
+    # unit: Unit = element(name="Unit")
     value: List[object] = elements(choices=type_inference)
 
 
