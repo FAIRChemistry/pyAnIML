@@ -97,7 +97,7 @@ def _generateField(
 
     if default:
         param_dict["default_factory"] = default
-    if default_value:
+    if default_value is not None:
         param_dict["default"] = default_value
 
     return field(**param_dict, metadata=metadata_dict)
