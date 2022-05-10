@@ -10,9 +10,9 @@ class SIUnit(SchemaBase):
     """Container for a SI base unit."""
 
     si_name: str
-    factor: float = attribute(name="factor", default_value=1.0)
-    exponent: float = attribute(name="exponent", default_value=1.0)
-    offset: float = attribute(name="offset", default_value=0.0)
+    factor: float = attribute(name="factor", default_value=1)
+    exponent: float = attribute(name="exponent", default_value=1)
+    offset: float = attribute(name="offset", default_value=0)
 
     # Validators
     @staticmethod
@@ -27,9 +27,9 @@ class SIUnit(SchemaBase):
 class Unit(SchemaBase):
     """Container for unit information for a series."""
 
-    si_unit: List[SIUnit] = element(name="SIUnit")
     label: str = attribute(name="label")
     quantity: str = attribute(name="quantity")
+    si_unit: List[SIUnit] = element(name="SIUnit", default=list)
 
     def add_si_unit(self, si_unit: SIUnit) -> None:
         """
