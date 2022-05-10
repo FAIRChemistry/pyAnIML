@@ -27,5 +27,5 @@ purposes = ["produced", "consumed"]
 # User types allowed for Author in Method of ExperimentStep
 user_types = ["human", "device", "software"]
 
-# Names of all SI Units
+# Allowed SI base units for the SIUnit class
 si_unit_name_list = ["1", "m", "kg", "s", "A", "K", "mol", "cd"]
