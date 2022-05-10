@@ -1,3 +1,5 @@
+import pydantic
+
 from typing import List
 from dataclasses import dataclass
 from pyaniml.core.unit import Unit
