@@ -1,17 +1,17 @@
 from typing import List, Union
 from dataclasses import dataclass
+
 from pyaniml.core.series import SeriesSet
-from pyaniml.utility.utils import SchemaBase, attribute, element, elements
-from pyaniml.core.enums import type_inference
+from pyaniml.utility.utils import SchemaBase, attribute, elements
 
 
 @dataclass
 class Parameter(SchemaBase):
     """Container holding a parameter description"""
 
+    value: Union[str, float, int, bool]
     name: str = attribute()
     parameter_type: str = attribute(name="parameterType")
-    value: List[object] = elements(choices=type_inference)
 
 
 @dataclass

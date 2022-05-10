@@ -1,5 +1,6 @@
 from typing import List
 from dataclasses import dataclass
+from pyaniml.core.unit import Unit
 from pyaniml.utility.utils import SchemaBase, element, attribute, elements
 from pyaniml.core.enums import data_types, dependencies, type_inference
 
@@ -20,6 +21,7 @@ class Series(SchemaBase):
     individual_value_set: IndividualValueSet = element(
         name="IndividualValueSet"
     )
+    unit: Unit = element(name="Unit")
     data_type: str = attribute(name="SeriesType")
     dependency: str = attribute()
     plot_scale: str = attribute(name="plotScale")
