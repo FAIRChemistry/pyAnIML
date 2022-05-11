@@ -1,4 +1,4 @@
-from typing import List, Union
+from typing import List, Optional, Union
 from dataclasses import dataclass
 
 from pyaniml.core.series import SeriesSet
@@ -23,6 +23,7 @@ class Category(SchemaBase):
         choices=(
             {"name": "Parameter", "type": Parameter},
             {"name": "SeriesSet", "type": SeriesSet},
+            {"name": "Category", "type": Optional["Category"]},
         ),
         default=list,
     )
