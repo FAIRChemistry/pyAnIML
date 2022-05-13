@@ -1,6 +1,7 @@
 from dataclasses import dataclass
-from typing import List, Union, Optional
-from pyaniml.utility.utils import SchemaBase, elements, attribute
+from typing import List, Union
+
+from pyaniml.utility.utils import SchemaBase, elements
 from pyaniml.core.series import SeriesSet
 from pyaniml.core.parameter import Category
 

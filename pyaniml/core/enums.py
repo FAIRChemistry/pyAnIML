@@ -1,31 +1,83 @@
-# Basic data types and mapping
-# TODO extend to all parameter types
-
-# Data types that are used within parameters and
-# individual value sets
-data_types = {int: "I", float: "F", str: "S", bool: "Boolean"}
-
-# Tuple that is used to derive xsd:choice elements
-# according to their type
-type_inference = tuple(
-    {"name": element_name, "type": data_type}
-    for data_type, element_name in data_types.items()
-)
+from enum import Enum
 
 
-# Datatypes which are supported via the
-# parameter as well as series type
-parameter_types = ["Int32", "Int64", "Float32", "Float64", "String"]
+class DataTypeChoices(Enum):
 
-# Dependency enum describing the supported options for the
-# dependencies attribute
-dependencies = ["dependent", "independent"]
+    """
+    This Enum stores the mapping from native Python types to the corresponding
+    types in AnIMLs Series element.
+    """
 
-# Purpose enum describing supported sample purposes
-purposes = ["produced", "consumed"]
+    I = "I"
+    F = "F"
+    S = "S"
+    Boolean = "Boolean"
 
-# User types allowed for Author in Method of ExperimentStep
-user_types = ["human", "device", "software"]
+    @classmethod
+    def get(cls):
+        return (
+            {"name": "I", "type": int},
+            {"name": "F", "type": float},
+            {"name": "S", "type": str},
+            {"name": "Boolean", "type": bool},
+        )
 
-# Names of all SI Units
-si_unit_name_list = ["1", "m", "kg", "s", "A", "K", "mol", "cd"]
+
+class DataTypes(Enum):
+
+    """
+    This Enum stores all data types that are supported as an attribute in AnIML
+    """
+
+    INT32 = "Int32"
+    INT64 = "Int64"
+    FLOAT32 = "Float32"
+    FLOAT64 = "Float64"
+    STRING = "String"
+
+
+class Dependencies(Enum):
+
+    """
+    This Enum stores all types of dependencies found in AnIML.
+    """
+
+    DEPENDENT = "dependent"
+    INDEPENDENT = "independent"
+
+
+class Purposes(Enum):
+
+    """
+    This Enum stores all supported sample purposes in AnIML.
+    """
+
+    PRODUCED = "produced"
+    CONSUMED = "consumed"
+
+
+class UserTypes(Enum):
+
+    """
+    This Enum stores all supported user types in AnIML.
+    """
+
+    HUMAN = "human"
+    DEVICE = "device"
+    SOFTWARE = "software"
+
+
+class SIUnits(Enum):
+
+    """
+    This Enum stores all supported SI units in AnIML.
+    """
+
+    DIMENSIONLESS = "1"
+    METER = "m"
+    GRAM = "g"
+    SECOND = "s"
+    AMPERE = "A"
+    KELVIN = "K"
+    MOL = "mol"
+    CANDELA = "cd"

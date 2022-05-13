@@ -1,0 +1,9 @@
+{
+  "SubElement": {
+    "Foo": "Foo",
+    "choice": [
+      1.0,
+      10
+    ]
+  }
+}
