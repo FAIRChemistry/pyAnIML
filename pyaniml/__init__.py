@@ -16,3 +16,8 @@ from pyaniml.core import Software
 from pyaniml.core import Result
 from pyaniml.core import Unit
 from pyaniml.core import SIUnit
+from pyaniml.core import DataTypeChoices
+from pyaniml.core import Dependencies
+from pyaniml.core import DataTypes
+from pyaniml.core import Purposes
+from pyaniml.core import SIUnits

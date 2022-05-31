@@ -16,3 +16,8 @@ from pyaniml.core.method import Software
 from pyaniml.core.result import Result
 from pyaniml.core.unit import Unit
 from pyaniml.core.unit import SIUnit
+from pyaniml.core.enums import DataTypeChoices
+from pyaniml.core.enums import Dependencies
+from pyaniml.core.enums import DataTypes
+from pyaniml.core.enums import Purposes
+from pyaniml.core.enums import SIUnits

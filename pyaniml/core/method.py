@@ -1,8 +1,9 @@
 from dataclasses import dataclass
 from typing import List, Union
+
 from pyaniml.utility.utils import SchemaBase, attribute, element, elements
 from pyaniml.core.parameter import Category
-from pyaniml.core.enums import user_types
+from pyaniml.core.enums import UserTypes
 
 
 @dataclass
@@ -30,20 +31,13 @@ class Device(SchemaBase):
 class Author(SchemaBase):
     """Container describing an author"""
 
-    user_type: str = attribute("userType")
+    user_type: UserTypes = attribute("userType")
     name: str = element("Name")
     affiliation: str = element("Affiliation")
     role: str = element("Role")
     email: str = element("Email")
     phone: str = element("Phone")
     location: str = element("Location")
-
-    @staticmethod
-    def verify_user_type(user_type):
-        if user_type not in user_types:
-            raise TypeError(
-                f"Unknown dependency argument '{user_type}'. Please choose from {user_types}"
-            )
 
 
 @dataclass

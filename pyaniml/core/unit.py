@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import List
 
-from pyaniml.core.enums import si_unit_name_list
+from pyaniml.core.enums import SIUnits
 from pyaniml.utility.utils import SchemaBase, element, attribute
 
 
@@ -9,18 +9,10 @@ from pyaniml.utility.utils import SchemaBase, element, attribute
 class SIUnit(SchemaBase):
     """Container for a SI base unit."""
 
-    si_name: str
+    si_name: SIUnits
     factor: float = attribute(name="factor", default_value=1)
     exponent: float = attribute(name="exponent", default_value=1)
     offset: float = attribute(name="offset", default_value=0)
-
-    # Validators
-    @staticmethod
-    def verify_si_name(si_name):
-        if si_name not in si_unit_name_list:
-            raise TypeError(
-                f"Invalid SI base unit. Please choose from {si_unit_name_list}."
-            )
 
 
 @dataclass

@@ -1,8 +1,9 @@
 from dataclasses import dataclass
 from typing import List, Union
+
 from pyaniml.utility.utils import attribute, elements, element, SchemaBase
 from pyaniml.core.parameter import Parameter, Category
-from pyaniml.core.enums import purposes
+from pyaniml.core.enums import Purposes
 
 
 @dataclass
@@ -25,6 +26,7 @@ class Sample(SchemaBase):
         Args:
             property (object): Some kind of property that describes the sample.
         """
+
         self.properties.append(property)
 
 
@@ -34,20 +36,11 @@ class SampleReference(SchemaBase):
 
     sample_id: str = attribute(name="sampleID")
     role: str = attribute(name="role")
-    sample_purpose: str = attribute(name="samplePurpose")
-
-    @staticmethod
-    def verify_sample_purpose(sample_purpose):
-        if sample_purpose not in purposes:
-            raise TypeError(
-                f"Unknown dependency argument '{sample_purpose}'. Please choose from {purposes}"
-            )
+    sample_purpose: Purposes = attribute(name="samplePurpose")
 
     @classmethod
-    def from_sample(cls, sample: Sample, role: str, sample_purpose: str):
-        return cls(
-            sample_id=sample.id, role=role, sample_purpose=sample_purpose
-        )
+    def from_sample(cls, sample: Sample, role: str, sample_purpose: Purposes):
+        return cls(sample_id=sample.id, role=role, sample_purpose=sample_purpose)
 
 
 @dataclass
@@ -73,7 +66,7 @@ class SampleReferenceSet(SchemaBase):
         name="SampleReference", default=list
     )
 
-    def add_reference(self, sample: Sample, role: str, sample_purpose: str):
+    def add_reference(self, sample: Sample, role: str, sample_purpose: Purposes):
         """Adds a sample reference to a sample set.
 
         Args:

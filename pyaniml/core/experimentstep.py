@@ -1,6 +1,6 @@
 from typing import Union, List
-from pydantic import validate_arguments
 from dataclasses import dataclass
+
 from pyaniml.utility import attribute, element, SchemaBase
 from pyaniml.core.sample import Sample
 from pyaniml.core.infrastructure import Infrastructure
@@ -10,6 +10,7 @@ from pyaniml.core.method import Device
 from pyaniml.core.method import Author
 from pyaniml.core.parameter import Category
 from pyaniml.core.series import SeriesSet
+from pyaniml.core.enums import Purposes
 
 
 @dataclass
@@ -24,9 +25,7 @@ class ExperimentStep(SchemaBase):
     method: Method = element(name="Method", default=Method)
     result: Result = element(name="Result", default=Result)
 
-    def add_sample_reference(
-        self, sample: Sample, role: str, sample_purpose: str
-    ):
+    def add_sample_reference(self, sample: Sample, role: str, sample_purpose: Purposes):
         """Adds a sample to the infrastructure and creates a Reference.
 
         Args:
@@ -38,9 +37,7 @@ class ExperimentStep(SchemaBase):
             sample=sample, role=role, sample_purpose=sample_purpose
         )
 
-    def add_method(
-        self, method: Union[Author, Device, Software, Category]
-    ) -> None:
+    def add_method(self, method: Union[Author, Device, Software, Category]) -> None:
         """Adds a method-related property to the Method section of an experiment step
 
         Args:

@@ -2,6 +2,7 @@ from typing import List, Optional, Union
 from dataclasses import dataclass
 
 from pyaniml.core.series import SeriesSet
+from pyaniml.core.enums import DataTypes
 from pyaniml.utility.utils import SchemaBase, attribute, elements
 
 
@@ -11,7 +12,7 @@ class Parameter(SchemaBase):
 
     value: Union[str, float, int, bool]
     name: str = attribute()
-    parameter_type: str = attribute(name="parameterType")
+    dtype: DataTypes = attribute(name="parameterType")
 
 
 @dataclass
@@ -28,10 +29,17 @@ class Category(SchemaBase):
         default=list,
     )
 
+    def __post_init__(self):
+        # Validate content types
+        if not all(isinstance(entry, (Parameter, SeriesSet)) for entry in self.content):
+            # Guard clause to check type conistency
+            raise TypeError("Property must be either a 'Parameter' or a 'SeriesSet'")
+
     def add_content(self, content: Union[Parameter, SeriesSet]) -> None:
         """Adds a category to the the container. Must be of any low-level AnIML type.
 
         Args:
-            category (Union[Parameter, SeriesSet]): A category of results.
+            content (Union[Parameter, SeriesSet]): Content to add to the container.
         """
+
         self.content.append(content)
