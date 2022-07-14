@@ -1,5 +1,7 @@
 from pyaniml.core import AnIMLDocument
+from pyaniml.core import Result
 from pyaniml.core import ExperimentStep
+from pyaniml.core import ExperimentStepSet
 from pyaniml.core import SampleReference
 from pyaniml.core import SampleReferenceSet
 from pyaniml.core import Sample
@@ -13,7 +15,6 @@ from pyaniml.core import Method
 from pyaniml.core import Device
 from pyaniml.core import Author
 from pyaniml.core import Software
-from pyaniml.core import Result
 from pyaniml.core import Unit
 from pyaniml.core import SIUnit
 from pyaniml.core import DataTypeChoices

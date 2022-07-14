@@ -1,16 +1,42 @@
-from typing import Union, List
+from typing import Optional, Union, List
 from dataclasses import dataclass
 
-from pyaniml.utility import attribute, element, SchemaBase
+from pyaniml.utility import attribute, element, elements, SchemaBase
 from pyaniml.core.sample import Sample
 from pyaniml.core.infrastructure import Infrastructure
-from pyaniml.core.result import Result
 from pyaniml.core.method import Method, Software
 from pyaniml.core.method import Device
 from pyaniml.core.method import Author
 from pyaniml.core.parameter import Category
 from pyaniml.core.series import SeriesSet
 from pyaniml.core.enums import Purposes
+
+
+@dataclass
+class Result(SchemaBase):
+    """Container for experiment results"""
+
+    results: List[object] = elements(
+        choices=(
+            {
+                "name": "ExperimentStepSet",
+                "type": Optional["ExperimentStepSet"],
+            },
+            {"name": "SeriesSet", "type": SeriesSet},
+            {"name": "Category", "type": Category},
+        ),
+        default=list,
+    )
+
+    def add_result(
+        self, result: Union["ExperimentStepSet", SeriesSet, Category]
+    ) -> None:
+        """Adds a measurement result to the the container. Must be of any low-level AnIML type.
+
+        Args:
+            result (Union[ExperimentStepSet, SeriesSet, Category]): The quantitive measurement results.
+        """
+        self.results.append(result)
 
 
 @dataclass
@@ -25,7 +51,9 @@ class ExperimentStep(SchemaBase):
     method: Method = element(name="Method", default=Method)
     result: Result = element(name="Result", default=Result)
 
-    def add_sample_reference(self, sample: Sample, role: str, sample_purpose: Purposes):
+    def add_sample_reference(
+        self, sample: Sample, role: str, sample_purpose: Purposes
+    ):
         """Adds a sample to the infrastructure and creates a Reference.
 
         Args:
@@ -37,7 +65,9 @@ class ExperimentStep(SchemaBase):
             sample=sample, role=role, sample_purpose=sample_purpose
         )
 
-    def add_method(self, method: Union[Author, Device, Software, Category]) -> None:
+    def add_method(
+        self, method: Union[Author, Device, Software, Category]
+    ) -> None:
         """Adds a method-related property to the Method section of an experiment step
 
         Args:
@@ -45,11 +75,13 @@ class ExperimentStep(SchemaBase):
         """
         self.method.add_method(method)
 
-    def add_result(self, result: Union[SeriesSet, Category]) -> None:
+    def add_result(
+        self, result: Union["ExperimentStepSet", SeriesSet, Category]
+    ) -> None:
         """Adds a result to the Result section of an experiment step
 
         Args:
-            result (Union[SeriesSet, Category]): Characteristics of a result.
+            result (Union[ExperimentStepSet, SeriesSet, Category]): Characteristics of a result.
         """
         self.result.add_result(result)
 
