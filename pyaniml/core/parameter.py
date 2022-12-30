@@ -31,9 +31,14 @@ class Category(SchemaBase):
 
     def __post_init__(self):
         # Validate content types
-        if not all(isinstance(entry, (Parameter, SeriesSet)) for entry in self.content):
+        if not all(
+            isinstance(entry, (Parameter, SeriesSet, self.__class__))
+            for entry in self.content
+        ):
             # Guard clause to check type conistency
-            raise TypeError("Property must be either a 'Parameter' or a 'SeriesSet'")
+            raise TypeError(
+                "Property must be either a 'Parameter', 'Category' or a 'SeriesSet'"
+            )
 
     def add_content(self, content: Union[Parameter, SeriesSet]) -> None:
         """Adds a category to the the container. Must be of any low-level AnIML type.

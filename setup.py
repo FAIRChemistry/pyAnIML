@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name="pyAnIML",
-    version="1.0.1",
+    version="1.0.2",
     description="Handling of AnIML files",
     url="https://github.com/FAIRChemistry/pyAnIML",
     author="Range, Jan",
